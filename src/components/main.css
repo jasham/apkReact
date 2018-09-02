@@ -1,0 +1,49 @@
+.login {
+    width: 100%;
+    color: #333333;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    float: none;
+}
+
+.inputBox {
+  margin-left: 10px;
+}
+
+.labelWidth {
+  width:90px;
+}
+
+.loginButton {
+  padding-left: 120px;
+  padding-top: 10px;
+}
+
+
+.backgroundMainPage {
+  background-color: #f2f5f9;
+}
+
+.box {
+    padding: 15px;
+    background: #fff;
+    width: auto;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
+}
+
+.actionBarSearch {
+  float: left;
+}
+
+.actionBarButtons {
+  width: 90px;
+}
+
+.actionBarMainDiv {
+  padding-top: 10px;
+}

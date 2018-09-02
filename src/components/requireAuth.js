@@ -3,29 +3,23 @@ import { connect } from 'react-redux';
 
 export default ChildComponent => {
   class ComposedComponent extends Component {
-    componentDidmount() {
-      console.log("Hello under HOC");
-      console.log("value of auth = ", this.props.auth);
+    componentDidMount() {
       this.shouldNavigateAway();
     }
-
-
-    shouldNavigateAway() {
-      console.log(this.props.auth);
+    componentDidUpdate() {
+      this.shouldNavigateAway();
+    }
+    shouldNavigateAway(){
       if (!this.props.auth) {
-        console.log(this.props.auth);
         this.props.history.push('/');
       }
     }
-
     render() {
       return <ChildComponent {...this.props} />;
     }
   }
-
   function mapStatetoprops(state) {
     return { auth: state.auth.authenticated };
   }
-
   return connect(mapStatetoprops)(ComposedComponent);
 };

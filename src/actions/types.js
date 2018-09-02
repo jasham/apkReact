@@ -1,1 +1,10 @@
 export const AUTH_USER = 'auth_user';
+export const FETCH_APP_TYPE = 'fetch_app_type';
+export const APP_TYPE_ID = 'app_type_id';
+export const UPDATE_APP_TYPE = 'update_app_type';
+export const UPDATE_MODAL_STATE = 'update_modal_state';
+export const STATUS_OF_APP_TYPE = 'status_of_app_type';
+export const CATEGORY_GET_DATA = 'category_get_data';
+export const ALL_CATEGORY_GET_DATA = 'all_category_get_data';
+export const ALL_APK_GET_DATA = 'all_apk_get_data';
+export const ALL_CATEGORY_SPECIFIC_GET_DATA = 'all_category_specific_get_data';

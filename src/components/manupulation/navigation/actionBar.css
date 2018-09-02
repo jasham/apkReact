@@ -1,0 +1,42 @@
+.rightButtons {
+  float: right;
+}
+
+.leftSide {
+  float: left;
+}
+
+.submitButton {
+  width:150px;
+  padding-left: 0px;
+}
+
+.main {
+  padding-top: 10px;
+}
+
+.inputBoxPadding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.submitButtonPadding {
+  padding-left: 5px;
+}
+
+.rightButtons {
+  padding-right: 2px;
+}
+
+.centerAligner {
+  align: center;
+}
+
+.formSetting {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.selectBox {
+  width:200px;
+}
