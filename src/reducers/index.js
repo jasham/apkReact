@@ -6,6 +6,7 @@ import appTypeStatus from './appTypeStatus';
 import categoryGetData from './categoryGetData';
 import apkGetData from './getAllApkData';
 import specificapkGetData from './getSpecificApkDetails';
+import categoryData from './getCategory';
 
 export default combineReducers({
   auth,
@@ -14,5 +15,6 @@ export default combineReducers({
   appTypeStatus: appTypeStatus,
   categoryGetData,
   allApkdata : apkGetData,
-  specificapkGetData
+  specificapkGetData,
+  categoryData
 });

@@ -2,7 +2,6 @@ import React from 'react';
 import { Table, thead, tbody, tr, td, Radio, Button } from 'react-bootstrap';
 
 export const AppTypeTable = (props) => {
-    console.log("Apptype = ", props.data)
     return (
             <Table responsive striped bordered condensed hover>
                 <thead>

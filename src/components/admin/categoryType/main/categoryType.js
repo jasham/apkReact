@@ -7,6 +7,7 @@ import { AddButton} from '../addButton/addButton';
 import { AppTypeTable } from '../table/table';
 import { AppTypeModal } from '../modal/modal';
 import { UpdateModal } from '../modal/updateModal';
+import Header from '../../../../components/commonComponents/header/header';
 
 class AppType extends Component {
 
@@ -122,6 +123,7 @@ class AppType extends Component {
     render() {
         return(
             <div className="container">
+                <Header />
                 <Grid>
                     <Row className="show-grid">
                        <Col className="col-lg-10 col-md-10">

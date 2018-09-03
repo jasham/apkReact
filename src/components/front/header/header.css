@@ -1,0 +1,79 @@
+.navbar_logo {
+  float : left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin:0px;
+}
+
+.menu {
+  float: right;
+}
+
+.navbar_header{
+  width: auto;
+  background: #fdfdfd;
+  border-bottom: 1px solid #e2e2e3;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border-top: 0px solid #fafafa;
+}
+
+.nav_menu {
+    display: block;
+    position: relative;
+    float: right;
+    border-top: 0px solid #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+
+.image_games {
+  display: block;
+  position: relative;
+  float: right;
+  background: url("https://static.apkpure.com/www/static/imgs/indexicon_v2.png") no-repeat;
+  background-position: 8px -78px;
+  padding-left:30px;
+  padding-top: 0px;
+  height: 60px;
+  outline: none;
+
+}
+.image_android {
+  display: block;
+  position: relative;
+  float: right;
+  background: url("https://static.apkpure.com/www/static/imgs/indexicon_v2.png") no-repeat;
+  background-position: 8px -11px;
+  padding-left:30px;
+  padding-top: 0px;
+  height: 60px;
+  outline: none;
+
+}
+
+.image_android:hover {
+  background-color: #f2f2f2;
+  border-top: 2px solid #99d95e;
+}
+.image_games:hover {
+  background-color: #f2f2f2;
+  border-top: 2px solid #99d95e;
+}
+.image_games:focus {
+  outline: none;
+}
+.google {
+  margin-top: -13px;
+  margin-bottom: -10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: block;
+  position: relative;
+  float: right;
+}

@@ -14,6 +14,8 @@ import ApkType from './components/admin/appType/main/appType';
 //import CategoryType from './components/manupulation/categorytype/categoryType';
 import CategoryType from './components/admin/categoryType/main/categoryType';
 import AddApk from './components/admin/addApk/main/addApk';
+import Front from './components/front/main/front';
+
 
 const store = createStore(
   reducers,
@@ -27,13 +29,12 @@ ReactDOM.render(
   <Provider store={ store } >
     <BrowserRouter>
       <App>
-        <Route path="/" exact component={Login} />
+        <Route path="/" exact component={Front} />
         <Route path="/admin" component={AdministratorPage} />
         <Route path="/admin/detailpage" component={ActionBar} />
         <Route path="/appType" component={ApkType} />
         <Route path="/categorytype" component={CategoryType} />
         <Route path="/addapk" component={AddApk} />
-        
       </App>
     </BrowserRouter>
   </Provider>, document.querySelector('#root'));

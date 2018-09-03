@@ -8,3 +8,4 @@ export const CATEGORY_GET_DATA = 'category_get_data';
 export const ALL_CATEGORY_GET_DATA = 'all_category_get_data';
 export const ALL_APK_GET_DATA = 'all_apk_get_data';
 export const ALL_CATEGORY_SPECIFIC_GET_DATA = 'all_category_specific_get_data';
+export const GET_CATEGORY_DATA = 'get_category_data';
