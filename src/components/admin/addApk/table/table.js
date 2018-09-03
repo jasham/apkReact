@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Table, thead, tbody, tr, td, Radio, Button , label} from 'react-bootstrap';
 
 export const AppTypeTable = (props) => {
-    console.log("Apptype = ", props.data)
+    console.log("Apptype 123 = ", props.data)
     return (
             <Table responsive striped bordered condensed hover>
                 <thead>
@@ -35,7 +35,7 @@ export const AppTypeTable = (props) => {
                                         <label>{ data.description }</label>
                                     </td>
                                     <td>
-                                        <label><Link to={ data.upload_path }>Link</Link></label>
+                                        <label>{data.upload_path !== null ? <Link to={ data.upload_path }>Link</Link> : 'No Link' }</label>
                                     </td>
                                     <td>
                                         <Button onClick= { props.onUpdateItem } >Update</Button>

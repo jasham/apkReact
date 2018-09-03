@@ -7,7 +7,7 @@ export const AddButton = (props) => {
 
     return (
         <div>
-            <Button onClick = { props.addButton } >Add Application Type</Button>
+            <Button onClick = { props.addButton } >Add APK</Button>
         </div>
     )
 }

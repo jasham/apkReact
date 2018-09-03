@@ -13,7 +13,6 @@ export const AppTypeTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {}
                     { 
                         Array.isArray(props.data) ? props.data.map((data) => {
                             return (

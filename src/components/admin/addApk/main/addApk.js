@@ -7,22 +7,21 @@ import { AddButton} from '../addButton/addButton';
 import { AppTypeTable } from '../table/table';
 import { AppTypeModal } from '../modal/modal';
 import { UpdateModal } from '../modal/updateModal';
+import Header from '../../../../components/commonComponents/header/header';
+
 
 class AddApk extends Component {
 
     componentDidMount(){
         this.props.appType()
         this.props.getAllApkData()
+        this.props.categoryGetData()
+        this.props.getCategory()
     }
     
     state = {
         modalStatus : false,
-        appTypeName : '',
         appValueToAdd : '',
-        dataLength : '',
-        selectedAppType : '',
-        temporaryAppTypevalue : '',
-        selectedAppTypeId : '',
         updateModalStatus : false,
         
         selectedApkId : '',
@@ -32,7 +31,9 @@ class AddApk extends Component {
         selectedCategoryName : '',
         apkName : '',
         description : '',
-        apkUploadPath : ''
+        apkUploadPath : '',
+        upload_path: '',
+        fileToUpload : null
     }
     
     clickAdd = () => {
@@ -40,15 +41,42 @@ class AddApk extends Component {
         this.modal
     }
 
+    addApkAppType = (typeId) => {
+        this.setState({ selectedAppTypeId : typeId })
+    }
+
+    addCategoryType = (typeId) => {
+        this.setState({ selectedCategoryId : typeId })
+    }
+
+    addApkDetails = () => {
+
+        const data = new FormData();
+        data.append('upload_path', this.state.fileToUpload, this.state.fileToUpload.name);
+        data.append('apkName',this.state.apkName)
+        data.append('description',this.state.description)
+        data.append('app_type',this.state.selectedAppTypeId)
+        data.append('category_type', this.state.selectedCategoryId)
+
+        this.props.addAPK(data)
+        this.setState({ modalStatus : false })
+    }
     modal = () => {
         return (
             <AppTypeModal 
                 showStatus={this.state.modalStatus}
                 closeModal={ this.closeModal }
-                addAppTypeData={this.props.addAppTypeData}
-                appValueToAdd={this.state.appValueToAdd}
                 appTypeValue={this.appTypeValue}
-                addAppType={this.addAppType}
+                appType = { this.props.data }
+                addApkAppType = { this.addApkAppType }
+                categoryData = { this.props.categoryData }
+                addCategoryType = { this.addCategoryType }
+                apkName = { this.state.apkName }
+                appTypeValue = { this.appTypeValue }
+                description = { this.state.description }
+                apkDescription = { this.apkDescription }
+                addApkDetails = { this.addApkDetails }
+                uploadedFile = { this.uploadedFile }
             />
         )
     }
@@ -58,10 +86,7 @@ class AddApk extends Component {
             <UpdateModal
                 showStatus={this.state.updateModalStatus}
                 closeModal={ this.closeModal }
-                appValueToAdd={this.state.appValueToAdd}
-                appTypeValue={this.appTypeValue}
-                updateAppType={ this.updateAppType }
-
+                appType = { this.props.data }
                 specificapkGetData = { this.props.specificapkGetData }
                 selectedApkId = { this.state.selectedApkId }
                 apkName = { this.state.apkName }
@@ -71,17 +96,43 @@ class AddApk extends Component {
                 selectedCategoryName = { this.state.selectedCategoryName }
                 description = { this.state.description }
                 apkUploadPath = { this.state.apkUploadPath }
+                updateApkAppType={ this.updateApkAppType }
+                categoryData = { this.props.categoryData }
+                updateCategoryAppType = { this.updateCategoryAppType }
+                appTypeValue={this.appTypeValue}
+                apkDescription = { this.apkDescription }
+                uploadedFile = { this.uploadedFile }
+                updateApkDetails = { this.updateApkDetails }
+                uploadedFile = { this.uploadedFile }
             />
         )
     }
 
-    updateAppType = () => {
-        const updateApp = {
-          id : this.state.selectedAppTypeId,
-          appType : this.state.appValueToAdd
-        }
-        this.props.updateAppTypeData(updateApp);
-        this.setState({updateModalStatus: false})
+    apkDescription = (event) => {
+        this.setState({ description : event.target.value })
+    }
+    updateApkAppType = (id) => {
+        this.setState({ selectedAppTypeId : id})
+    }
+
+    uploadDocumentRequest = ( file, name ) => {  
+        const data = new FormData();
+        data.append('file', this.state.fileToUpload);
+        data.append('name', name);
+      
+        return data
+    }
+
+    updateApkDetails = () => {
+        const data = new FormData();
+        data.append('upload_path', this.state.fileToUpload, this.state.fileToUpload.name);
+        data.append('apkName',this.state.apkName)
+        data.append('description',this.state.description)
+        data.append('app_type',this.state.selectedAppTypeId)
+        data.append('category_type', this.state.selectedCategoryId)
+
+        this.props.updateSpecificApkData(data,this.state.selectedApkId) 
+        this.setState({ updateModalStatus : false })       
     }
 
     sending = (e) => {
@@ -91,6 +142,10 @@ class AddApk extends Component {
         
        // this.setState({ temporaryAppTypevalue : e.target.value })
        // this.setState({ selectedAppTypeId : e.target.id })
+    }
+
+    uploadedFile = (event) => {
+        this.setState({ fileToUpload : event.target.files[0] })
     }
 
     deleteItem = () => {
@@ -109,9 +164,12 @@ class AddApk extends Component {
         this.setState({ selectedCategoryId : this.props.specificapkGetData.category_type.id })
         this.setState({ selectedCategoryName : this.props.specificapkGetData.category_type.categoryName })
         this.setState({ description : this.props.specificapkGetData.description })
-        this.setState({ apkUploadPath : this.props.specificapkGetData.upload_path })      
+        this.setState({ upload_path : this.props.specificapkGetData.upload_path })
     }
     
+    updateCategoryAppType = (id) => {
+        this.setState({ selectedCategoryId : id })
+    }
 
     appTypeValue = (event) => {
         this.setState({ apkName : event.target.value })
@@ -130,6 +188,7 @@ class AddApk extends Component {
     render() {
         return(
             <div className="container">
+                <Header/>
                 <Grid>
                     <Row className="show-grid">
                        <Col className="col-lg-10 col-md-10">
@@ -165,7 +224,8 @@ function mapStateToProps(state){
         data : state.auth.appTypedata,
         appTypeStatus : state.appTypeStatus.status,
         apkData : state.allApkdata,
-        specificapkGetData : state.specificapkGetData.specificapkGetData
+        specificapkGetData : state.specificapkGetData.specificapkGetData,
+        categoryData : state.categoryData
 
     }
 }

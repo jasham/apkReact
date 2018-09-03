@@ -9,13 +9,13 @@ export const UpdateModal = (props) => {
                     <Modal.Title>Enter Details</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <FormGroup controlId="formControlsSelect">
+                    <FormGroup>
                         <ControlLabel>Select App Type</ControlLabel>
 
-                        <FormControl componentClass="select" placeholder="select" onClick={ (e) => { props.updateCategoryAppType(e.target.value) }} >
+                        <FormControl componentClass="select" placeholder="select" onClick={ (e) => { props.updateApkAppType(e.target.value) }} >
                             <option key={props.selectedAppTypeId} value={props.selectedAppTypeId} > { props.selectedAppTypeName } </option>
                             {
-                                Array.isArray(props.appDetails) ? props.appDetails.map((data) => {
+                                Array.isArray(props.appType) ? props.appType.map((data) => {
                                     return (
                                         <option key={data.id} value={data.id} > { data.appType } </option>
                                     )
@@ -25,15 +25,15 @@ export const UpdateModal = (props) => {
                         </FormControl>
                     </FormGroup>
 
-                    <FormGroup controlId="formControlsSelect">
+                    <FormGroup>
                         <ControlLabel>Select Category Type</ControlLabel>
 
                         <FormControl componentClass="select" placeholder="select" onClick={ (e) => { props.updateCategoryAppType(e.target.value) }} >
                             <option key={props.selectedCategoryId} value={ props.selectedCategoryId } > { props.selectedCategoryName }</option>
                             {
-                                Array.isArray(props.appDetails) ? props.appDetails.map((data) => {
+                                Array.isArray(props.categoryData.categoryData) ? props.categoryData.categoryData.map((data) => {
                                     return (
-                                        <option key={data.id} value={data.id}> </option>
+                                        <option key={data.id} value={data.id}> { data.categoryName } </option>
                                     )
                                 }) : ''
                             }
@@ -41,7 +41,7 @@ export const UpdateModal = (props) => {
                         </FormControl>
                     </FormGroup>
                     
-                    <FormGroup controlId="formControlsSelect">
+                    <FormGroup >
                         
                         <ControlLabel>App Name</ControlLabel>
 
@@ -54,26 +54,27 @@ export const UpdateModal = (props) => {
                     
                     </FormGroup>
                     
-                    <FormGroup controlId="formControlsTextarea">
+                    <FormGroup >
                         <ControlLabel>Description</ControlLabel>
-                        <FormControl componentClass="textarea" placeholder="Description...." >
+                        <FormControl componentClass="textarea" placeholder="Description...." value={ props.description } onChange= { props.apkDescription } >
                             { props.description }
                         </FormControl>
                     </FormGroup>
                      
-                    <FormGroup controlId="formControlsTextarea">
+                    <FormGroup >
                         <ControlLabel>Select File To Upload</ControlLabel>
                         <FormControl 
                             id="formControlsFile"
                             type="file"
                             label="File"
+                            onChange= { props.uploadedFile }
                             help="Example block-level help text here."
                         />
                     </FormGroup>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={ props.closeModal } >Close</Button>
-                    <Button bsStyle="primary" onClick={ props.updateAppType } >Save changes</Button>
+                    <Button bsStyle="primary" onClick={ props.updateApkDetails } >Save changes</Button>
                 </Modal.Footer>
             </Modal>
         </div>
